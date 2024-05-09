@@ -1,0 +1,6 @@
+# ignore virtual environment and environment config directories.
+.vs/
+.venv/
+
+#ignore python file for compiling protobufs
+run_protobuf_compilation.py
