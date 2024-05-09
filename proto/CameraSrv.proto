@@ -1,0 +1,30 @@
+syntax = "proto3";
+package CameraSrv;
+option csharp_namespace = "HAL.MechMind.gRPC";
+
+// Camera Service definitions.
+service CameraSrv
+{
+	// Calls out to an external software which will return the camera data.
+	rpc TryTriggerCamera(CameraRequest) returns (CameraResponse);
+}
+
+// Request message containing settings for the camera.
+message CameraRequest
+{
+	// JSON formatted settings for the camera.
+	string settings = 1;
+}
+
+// Request message containing settings for the camera.
+message CameraResponse
+{
+	// Whether the request was successfully processed.
+	bool success = 1;
+
+	// JSON formatted response from the camera.
+	string payload = 2;
+
+	// User alias.
+	string alias = 3;
+}
