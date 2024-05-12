@@ -21,8 +21,7 @@ from grpc_compiled import CameraSrv_pb2_grpc
 # Declare variables 
 MIN_EDGES = 5
 PRECISION = 0.01
-LOWER_THRESHOLD = 120
-UPPER_THRESHOLD = 255
+THRESHOLD = 120
 
 PORT = 50051
 ALIAS = "Paul McHard"
@@ -74,7 +73,9 @@ class RegionDetectionService(CameraSrv_pb2_grpc.CameraSrvServicer):
          vertex_set.append(contour_points)
 
       # Return the list of closed regions
-      return closed_polylines, vertex_set 
+      return closed_polylines, vertex_set
+
+   ### ADD YOUR CUSTOM FUNCTION HERE 
 
    def format_json(self, regions):
       '''
@@ -115,7 +116,7 @@ class RegionDetectionService(CameraSrv_pb2_grpc.CameraSrvServicer):
       image = cv2.imread(img_file)
       get_module_logger().info("finding regions in {0}".format(img_file))
       # Replace this line with your own function... if you dare!
-      polylines, vertices = self.find_regions(image.copy(), min_edges=MIN_EDGES, precision=PRECISION, binaryThreshold=LOWER_THRESHOLD) 
+      polylines, vertices = self.find_regions(image.copy(), min_edges=MIN_EDGES, precision=PRECISION, binaryThreshold=THRESHOLD) 
       
       get_module_logger().info("Formatting region data as JSON payload...")
       payload = self.format_json(vertices)
