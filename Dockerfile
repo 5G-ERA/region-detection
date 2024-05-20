@@ -15,7 +15,7 @@ RUN pip install --upgrade pip && pip install -r requirements.txt
 COPY . .
 
 # Expose gRPC server port
-EXPOSE 500XX
+EXPOSE 50099
 
 # Define the command to run the server
 CMD ["python", "regionDetection.py"] 

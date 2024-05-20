@@ -23,7 +23,7 @@ MIN_EDGES = 5
 PRECISION = 0.01
 THRESHOLD = 120
 
-PORT = 500XX
+PORT = 50099
 ALIAS = "Paul McHard"
 
 # End of Variables
